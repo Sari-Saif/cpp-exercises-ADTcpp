@@ -20,11 +20,11 @@ int main() {
 	PAdptArray mybooks = CreateAdptArray(copy_book,delete_book,print_book);
 	//SetAdptArrayAt(mybooks,3,b1);
 	//SetAdptArrayAt(mybooks,5,b2);
-	printf("the size is %d\n",GetAdptArraySize(mybooks));  //should print 6
+	//printf("the size is %d\n",GetAdptArraySize(mybooks));  //should print 6
 	//pbook b = GetAdptArrayAt(mybooks,4); // should return null;
 	//assert(b==NULL); // doesn't fail
 	//b = GetAdptArrayAt(mybooks,3);
-	printf("the book is %s\n",b->name); //should print "Harry Potter"
+	//printf("the book is %s\n",b->name); //should print "Harry Potter"
 	PrintDB(mybooks);
 
 	pperson p1 = creat_person("Harry","Potter", 934);
