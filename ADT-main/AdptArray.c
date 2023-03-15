@@ -58,3 +58,19 @@ void DeleteAdptArray(PAdptArray PAA)
 	free(PAA);
 
 }
+
+
+
+
+
+Result help_SetAdptArrayAt(PAdptArray P_ADT_A, int ind, PElement P_E)
+{
+	
+}
+
+
+Result SetAdptArrayAt(PAdptArray P_ADT_A, int ind, PElement P_E)
+{
+	Result result = help_SetAdptArrayAt(P_ADT_A,ind,P_E);
+	return result;
+}
