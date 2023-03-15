@@ -12,13 +12,12 @@ typedef struct AdptArray_
 	DEL_FUNC df;
 	PElement *P_E;
 	int SIZE_OF_ARR;
-}AdptArray, * PAdptArray;
+} AdptArray, * PAdptArray;
 /*
 	initializes an empty array (ie no members)
 */
 PAdptArray CreateAdptArray(COPY_FUNC cf, DEL_FUNC df, PRINT_FUNC pf)
 {
-	// space allocation
 	PAdptArray new_arr;
 	// allocate more memory and make it flexible
 	new_arr = (PAdptArray)malloc(sizeof(AdptArray) * 2);
@@ -39,7 +38,7 @@ PAdptArray CreateAdptArray(COPY_FUNC cf, DEL_FUNC df, PRINT_FUNC pf)
 }
 
 /*
-	frees the memory of the object including his organs(including his organs)
+   frees the memory of the object including his organs(including his organs)
 */
 void DeleteAdptArray(PAdptArray PAA)
 {
