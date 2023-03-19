@@ -142,4 +142,14 @@ int GetAdptArraySize(PAdptArray P_adtArr)
 		return size;
 	}
 }
-void PrintDB(PAdptArray);
+void PrintDB(PAdptArray P_ADT_Arr)
+{
+
+	int i =0;
+	while (i<P_ADT_Arr->SIZE_OF_ARR)
+	{
+		P_ADT_Arr->pf(P_ADT_Arr->P_Element);
+		i+=1;
+	}
+
+}
