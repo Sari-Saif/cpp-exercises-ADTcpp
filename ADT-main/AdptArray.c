@@ -82,7 +82,7 @@
 		// case that asked index out of range the original array size	
 		if( index >= P_ADT_Arr->SIZE_OF_ARR)
 		{
-			if((new_P_E = (PElement*)calloc((new_index), sizeof(PElement)==NULL) == NULL))
+			if((new_P_E = (PElement*)calloc((new_index), sizeof(PElement))) == NULL)
 			{
 				return FAIL;
 			}
