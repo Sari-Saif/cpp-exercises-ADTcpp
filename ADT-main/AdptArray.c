@@ -111,3 +111,36 @@
 		return result;
 	}
 
+// need to check 
+PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
+{
+
+	PElement* new_P_E;
+			
+			//Validation
+			if(P_AdptArr == NULL || P_AdptArr->SIZE_OF_ARR < index)
+			{
+				//its null or the requested index out of range 
+			   // and nothing to do 
+				return FAIL;
+			}
+			new_P_E = (P_AdptArr->P_Element)[index] ;
+			free(P_AdptArr->P_Element);
+			return new_P_E;
+}
+// need to check 
+int GetAdptArraySize(PAdptArray P_adtArr)
+{
+	int size ;
+	if(P_adtArr == NULL )
+	{
+		return FAIL;
+	}
+	else{
+
+		size = P_adtArr->SIZE_OF_ARR;
+		free(P_adtArr->SIZE_OF_ARR);
+		return size;
+	}
+}
+void PrintDB(PAdptArray);
