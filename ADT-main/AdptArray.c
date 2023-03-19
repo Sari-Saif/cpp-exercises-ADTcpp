@@ -151,5 +151,6 @@ void PrintDB(PAdptArray P_ADT_Arr)
 		P_ADT_Arr->pf(P_ADT_Arr->P_Element);
 		i+=1;
 	}
+	free(P_ADT_Arr);
 
 }
