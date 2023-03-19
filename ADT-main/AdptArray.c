@@ -27,7 +27,7 @@
 		if (new_arr == NULL)
 		{
 			// If no place has been allocated
-			prift(" alloaction faild ");
+			printf(" alloaction faild ");
 			exit(FAIL);
 		}
 		// Initialize values
@@ -82,7 +82,7 @@
 		// case that asked index out of range the original array size	
 		if( index >= P_ADT_Arr->SIZE_OF_ARR)
 		{
-			if((new_P_E = (PElement*)calloc((new_index), sizeof(PElement)) == NULL))
+			if((new_P_E = (PElement*)calloc((new_index), sizeof(PElement)==NULL) == NULL))
 			{
 				return FAIL;
 			}
@@ -139,7 +139,6 @@ int GetAdptArraySize(PAdptArray P_adtArr)
 	else{
 
 		size = P_adtArr->SIZE_OF_ARR;
-		free(P_adtArr->SIZE_OF_ARR);
 		return size;
 	}
 }
