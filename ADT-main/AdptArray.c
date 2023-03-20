@@ -4,7 +4,7 @@
 	#include <stdio.h>
 	#include "AdptArray.h"
 
-	Result help_SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element);
+	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element);
 
 
 	// struct structure 
@@ -27,8 +27,8 @@
 		if (new_arr == NULL)
 		{
 			// If no place has been allocated
-			printf(" alloaction faild ");
-			exit(FAIL);
+			//printf(" alloaction faild ");
+			return NULL;
 		}
 		// Initialize values
 		new_arr->cf = cf;
@@ -43,7 +43,7 @@
 	/*
 		frees the memory of the object including his organs(including his organs)
 	*/
-	void DeleteAdptArray(AdptArray PAA)
+	void DeleteAdptArray(PAdptArray PAA)
 	{
 		if(PAA == NULL)
 		{
@@ -54,7 +54,7 @@
 		while (at < PAA ->SIZE_OF_ARR)
 		{
 			PAA->df((PAA->P_Element)[at]);
-			at++;
+			++at;
 		}
 		//Pointers should be freed so that there will be no memory leak
 		free(PAA->P_Element);
@@ -69,7 +69,7 @@
 	Exists
 
 	*/
-	Result help_SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element)
+	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element)
 	{
 
 		PElement* new_P_E;
@@ -105,7 +105,7 @@
 
 	}
 
-	Result SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element)
+	Result SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element)
 	{
 		Result result = help_SetAdptArrayAt(P_ADT_Arr,index,P_Element);
 		return result;
