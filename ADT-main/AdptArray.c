@@ -51,7 +51,7 @@
 			return;
 		}
 		int at = 0;
-		while (at < PAA ->SIZE_OF_ARR)
+		while (at < PAA->SIZE_OF_ARR)
 		{
 			PAA->df((PAA->P_Element)[at]);
 			++at;
@@ -92,12 +92,12 @@
 			P_ADT_Arr-> P_Element = new_P_E;
 		}
 			// delete what was in at index
-			P_ADT_Arr ->df((P_ADT_Arr->P_Element)[index]);
+			P_ADT_Arr->df((P_ADT_Arr->P_Element)[index]);
 			// replace with new element
 			(P_ADT_Arr->P_Element)[index] = P_ADT_Arr ->cf(new_P_E);
 
 			// check if need to update size of P_ADT_Arr
-			if(index >= P_ADT_Arr -> SIZE_OF_ARR)
+			if(index >=P_ADT_Arr->SIZE_OF_ARR)
 			{
 				P_ADT_Arr->SIZE_OF_ARR = new_index;
 			}
@@ -148,7 +148,14 @@ void PrintDB(PAdptArray P_ADT_Arr)
 	int i =0;
 	while (i<P_ADT_Arr->SIZE_OF_ARR)
 	{
-		P_ADT_Arr->pf(P_ADT_Arr->P_Element);
+		if((P_ADT_Arr->P_Element)[i] == NULL )
+		{
+			continue;
+		}
+		else
+		{
+			P_ADT_Arr->pf((P_ADT_Arr->P_Element)[i]);
+		}
 		i+=1;
 	}
 	free(P_ADT_Arr);
