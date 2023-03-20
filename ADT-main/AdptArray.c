@@ -23,7 +23,7 @@
 	{
 		PAdptArray new_arr;
 		// allocate more memory and make it flexible
-		new_arr = (PAdptArray)malloc(sizeof(AdptArray) * 2);
+		new_arr = (PAdptArray)malloc(sizeof(AdptArray));
 		if (new_arr == NULL)
 		{
 			// If no place has been allocated
