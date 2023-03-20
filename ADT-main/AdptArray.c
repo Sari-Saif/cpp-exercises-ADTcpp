@@ -4,7 +4,7 @@
 	#include <stdio.h>
 	#include "AdptArray.h"
 
-	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element);
+	Result help_SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element);
 
 
 	// struct structure 
@@ -15,7 +15,7 @@
 		DEL_FUNC df;
 		PElement *P_Element;
 		int SIZE_OF_ARR;
-	} AdptArray, * PAdptArray;
+	} AdptArray;
 	/*
 		initializes an empty array (ie no members)
 	*/
@@ -43,7 +43,7 @@
 	/*
 		frees the memory of the object including his organs(including his organs)
 	*/
-	void DeleteAdptArray(PAdptArray PAA)
+	void DeleteAdptArray(AdptArray PAA)
 	{
 		if(PAA == NULL)
 		{
@@ -69,7 +69,7 @@
 	Exists
 
 	*/
-	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element)
+	Result help_SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element)
 	{
 
 		PElement* new_P_E;
@@ -105,14 +105,14 @@
 
 	}
 
-	Result SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element)
+	Result SetAdptArrayAt(AdptArray P_ADT_Arr, int index, PElement P_Element)
 	{
 		Result result = help_SetAdptArrayAt(P_ADT_Arr,index,P_Element);
 		return result;
 	}
 
 // need to check 
-PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
+PElement GetAdptArrayAt(AdptArray P_AdptArr, int index)
 {
 
 	PElement* new_P_E;
@@ -129,20 +129,20 @@ PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
 			return new_P_E;
 }
 // need to check 
-int GetAdptArraySize(PAdptArray P_adtArr)
+int GetAdptArraySize(AdptArray P_adtArr)
 {
 	int size ;
 	if(P_adtArr == NULL )
 	{
-		return FAIL;
+		size = -1;
 	}
 	else{
 
 		size = P_adtArr->SIZE_OF_ARR;
-		return size;
 	}
+	return size;
 }
-void PrintDB(PAdptArray P_ADT_Arr)
+void PrintDB(AdptArray P_ADT_Arr)
 {
 
 	int i =0;
