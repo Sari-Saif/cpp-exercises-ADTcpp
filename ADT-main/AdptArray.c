@@ -15,7 +15,7 @@
 		DEL_FUNC df;
 		PElement *P_Element;
 		int SIZE_OF_ARR;
-	} AdptArray;
+	} AdptArray ,*PAdptArray;
 	/*
 		initializes an empty array (ie no members)
 	*/
@@ -112,7 +112,7 @@
 	}
 
 // need to check 
-PElement GetAdptArrayAt(AdptArray P_AdptArr, int index)
+PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
 {
 
 	PElement* new_P_E;
@@ -129,7 +129,7 @@ PElement GetAdptArrayAt(AdptArray P_AdptArr, int index)
 			return new_P_E;
 }
 // need to check 
-int GetAdptArraySize(AdptArray P_adtArr)
+int GetAdptArraySize(PAdptArray P_adtArr)
 {
 	int size ;
 	if(P_adtArr == NULL )
@@ -142,7 +142,7 @@ int GetAdptArraySize(AdptArray P_adtArr)
 	}
 	return size;
 }
-void PrintDB(AdptArray P_ADT_Arr)
+void PrintDB(PAdptArray P_ADT_Arr)
 {
 
 	int i =0;
