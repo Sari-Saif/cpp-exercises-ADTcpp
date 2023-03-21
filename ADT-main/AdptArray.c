@@ -14,7 +14,7 @@ typedef struct AdptArray_
 	DEL_FUNC df;
 	PElement *P_Element;
 	int SIZE_OF_ARR;	
-} AdptArray ;//*PAdptArray;
+} AdptArray ;
 /*
 	initializes an empty array (ie no members)
 */
@@ -140,7 +140,7 @@ PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
 return NULL;	
 }
 /*
-
+Get Size of array
 */
 int GetAdptArraySize(PAdptArray P_adtArr)
 {
