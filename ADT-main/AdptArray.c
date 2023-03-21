@@ -1,8 +1,7 @@
-
-	#include <string.h>
-	#include <stdlib.h>
-	#include <stdio.h>
-	#include "AdptArray.h"
+#include "AdptArray.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element);
 
@@ -14,8 +13,8 @@
 		PRINT_FUNC pf;
 		DEL_FUNC df;
 		PElement *P_Element;
-		int SIZE_OF_ARR;
-	} AdptArray ,*PAdptArray;
+		int SIZE_OF_ARR;	
+	} AdptArray ;//*PAdptArray;
 	/*
 		initializes an empty array (ie no members)
 	*/
@@ -78,28 +77,33 @@
 		{
 			return FAIL;
 		}
-		int new_index = index + 1 ; 
+		int new_size = index + 1 ; 
 		// case that asked index out of range the original array size	
 		if( index >= P_ADT_Arr->SIZE_OF_ARR)
 		{
-			if((new_P_E = (PElement*)calloc((new_index), sizeof(PElement))) == NULL)
+			if((new_P_E = (PElement*)calloc((new_size), sizeof(PElement))) == NULL)
 			{
 				return FAIL;
 			}
-			memcpy( new_P_E , P_ADT_Arr->P_Element , (P_ADT_Arr->SIZE_OF_ARR)  * sizeof(PElement));
+			memcpy( new_P_E , P_ADT_Arr->P_Element , (P_ADT_Arr->SIZE_OF_ARR)* sizeof(PElement));
 			// release the old value and update it with the new value
 			free(P_ADT_Arr->P_Element);
 			P_ADT_Arr-> P_Element = new_P_E;
 		}
-			// delete what was in at index
-			P_ADT_Arr->df((P_ADT_Arr->P_Element)[index]);
+			if(P_ADT_Arr->P_Element[index])
+			{
+			// delete what was in at index;
+			P_ADT_Arr->df(P_ADT_Arr->P_Element[index]);
+			}
+
 			// replace with new element
-			(P_ADT_Arr->P_Element)[index] = P_ADT_Arr ->cf(new_P_E);
+			P_ADT_Arr->P_Element[index] = P_ADT_Arr ->cf(new_P_E);
+			
 
 			// check if need to update size of P_ADT_Arr
 			if(index >=P_ADT_Arr->SIZE_OF_ARR)
 			{
-				P_ADT_Arr->SIZE_OF_ARR = new_index;
+				P_ADT_Arr->SIZE_OF_ARR = new_size;
 			}
 		return SUCCESS;
 
@@ -115,18 +119,21 @@
 PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
 {
 
-	PElement* new_P_E;
+	PElement new_P_E;
 			
 			//Validation
 			if(P_AdptArr == NULL || P_AdptArr->SIZE_OF_ARR < index)
 			{
 				//its null or the requested index out of range 
 			   // and nothing to do 
-				return FAIL;
+				return NULL;
 			}
-			new_P_E = (P_AdptArr->P_Element)[index] ;
-			free(P_AdptArr->P_Element);
-			return new_P_E;
+			if(P_AdptArr->P_Element[index]!=NULL)
+			{
+
+			return P_AdptArr->cf((P_AdptArr->P_Element)[index]);
+			}
+	return NULL;	
 }
 // need to check 
 int GetAdptArraySize(PAdptArray P_adtArr)
@@ -158,6 +165,4 @@ void PrintDB(PAdptArray P_ADT_Arr)
 			i+=1;
 		}
 	}
-	free(P_ADT_Arr);
-
 }
