@@ -52,7 +52,11 @@
 		int at = 0;
 		while (at < PAA->SIZE_OF_ARR)
 		{
-			PAA->df((PAA->P_Element)[at]);
+			if (PAA->P_Element[at])
+			{
+				PAA->df((PAA->P_Element)[at]);
+				//free(PAA->P_Element[at]);
+			}
 			++at;
 		}
 		//Pointers should be freed so that there will be no memory leak
@@ -71,7 +75,7 @@
 	Result help_SetAdptArrayAt(PAdptArray P_ADT_Arr, int index, PElement P_Element)
 	{
 
-		PElement* new_P_E;
+		PElement* new_arr;
 		//Validation
 		if(P_Element == NULL)
 		{
@@ -81,14 +85,18 @@
 		// case that asked index out of range the original array size	
 		if( index >= P_ADT_Arr->SIZE_OF_ARR)
 		{
-			if((new_P_E = (PElement*)calloc((new_size), sizeof(PElement))) == NULL)
+			if((new_arr = (PElement*)calloc((new_size), sizeof(PElement))) == NULL)
 			{
 				return FAIL;
 			}
-			memcpy( new_P_E , P_ADT_Arr->P_Element , (P_ADT_Arr->SIZE_OF_ARR)* sizeof(PElement));
 			// release the old value and update it with the new value
+			for(int i=0;i<P_ADT_Arr->SIZE_OF_ARR;i++)
+			{
+				new_arr[i] = P_ADT_Arr->P_Element[i];
+			}
+
 			free(P_ADT_Arr->P_Element);
-			P_ADT_Arr-> P_Element = new_P_E;
+			P_ADT_Arr-> P_Element = new_arr;
 		}
 			if(P_ADT_Arr->P_Element[index])
 			{
@@ -97,7 +105,7 @@
 			}
 
 			// replace with new element
-			P_ADT_Arr->P_Element[index] = P_ADT_Arr ->cf(new_P_E);
+			P_ADT_Arr->P_Element[index] = P_ADT_Arr ->cf(P_Element);
 			
 
 			// check if need to update size of P_ADT_Arr
@@ -117,10 +125,7 @@
 
 // need to check 
 PElement GetAdptArrayAt(PAdptArray P_AdptArr, int index)
-{
-
-	PElement new_P_E;
-			
+{			
 			//Validation
 			if(P_AdptArr == NULL || P_AdptArr->SIZE_OF_ARR < index)
 			{
@@ -157,7 +162,7 @@ void PrintDB(PAdptArray P_ADT_Arr)
 	{
 		if((P_ADT_Arr->P_Element)[i] == NULL )
 		{
-			continue;
+			i++;
 		}
 		else
 		{
